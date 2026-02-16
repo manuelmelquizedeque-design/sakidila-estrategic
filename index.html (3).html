@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakidila - Ginásio Mental para Estrategistas</title>
+    <title>Sakidila - O Ginásio Mental dos 10%</title>
+    <meta name="description" content="Comunidade exclusiva para executivos e empreendedores que pensam estrategicamente.">
     <style>
         * {
             margin: 0;
@@ -14,278 +15,46 @@
 
 ```
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: linear-gradient(135deg, #0a1628 0%, #1a2f4f 50%, #0f1b35 100%);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
-        color: white;
-        overflow-x: hidden;
+        padding: 20px;
         position: relative;
     }
 
-    /* Efeito de partículas/estrelas */
-    .stars {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-
-    .star {
+    /* Animação de fundo */
+    body::before {
+        content: '';
         position: absolute;
-        width: 2px;
-        height: 2px;
-        background: white;
-        border-radius: 50%;
-        animation: twinkle 3s infinite;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: moveBackground 20s linear infinite;
+        z-index: 0;
     }
 
-    @keyframes twinkle {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 1; }
-    }
-
-    /* Círculos decorativos */
-    .circle-decoration {
-        position: absolute;
-        border-radius: 50%;
-        opacity: 0.1;
-        animation: float 20s infinite ease-in-out;
-    }
-
-    .circle-1 {
-        width: 300px;
-        height: 300px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        top: -100px;
-        right: -100px;
-    }
-
-    .circle-2 {
-        width: 400px;
-        height: 400px;
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        bottom: -150px;
-        left: -150px;
-        animation-delay: -5s;
-    }
-
-    .circle-3 {
-        width: 200px;
-        height: 200px;
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        top: 50%;
-        right: 10%;
-        animation-delay: -10s;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translate(0, 0) rotate(0deg); }
-        33% { transform: translate(30px, -30px) rotate(120deg); }
-        66% { transform: translate(-20px, 20px) rotate(240deg); }
+    @keyframes moveBackground {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
     }
 
     .container {
         max-width: 600px;
+        width: 100%;
         margin: 0 auto;
-        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 50px 40px;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3);
         position: relative;
         z-index: 1;
+        animation: fadeIn 0.8s ease-out;
     }
 
-    .logo {
-        text-align: center;
-        margin-bottom: 50px;
-        animation: fadeInDown 1s ease-out;
-    }
-
-    .logo h1 {
-        font-size: 2.5em;
-        font-weight: 700;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 10px;
-    }
-
-    .badge {
-        display: inline-block;
-        background: rgba(102, 126, 234, 0.2);
-        border: 1px solid rgba(102, 126, 234, 0.5);
-        color: #667eea;
-        padding: 8px 20px;
-        border-radius: 20px;
-        font-size: 0.85em;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    .hero {
-        text-align: center;
-        margin-bottom: 50px;
-        animation: fadeIn 1.2s ease-out;
-    }
-
-    .hero h2 {
-        font-size: 2.8em;
-        line-height: 1.2;
-        margin-bottom: 20px;
-        font-weight: 700;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero .gradient-text {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #667eea 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .stats {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 30px;
-        margin-bottom: 40px;
-        animation: fadeIn 1.4s ease-out;
-    }
-
-    .stats p {
-        font-size: 1.15em;
-        line-height: 1.8;
-        margin-bottom: 10px;
-    }
-
-    .stats .highlight {
-        color: #f093fb;
-        font-weight: 700;
-        font-size: 1.3em;
-    }
-
-    .value-prop {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-        border: 1px solid rgba(102, 126, 234, 0.3);
-        border-radius: 20px;
-        padding: 30px;
-        margin-bottom: 40px;
-        text-align: center;
-        animation: fadeIn 1.6s ease-out;
-    }
-
-    .value-prop h3 {
-        font-size: 1.5em;
-        margin-bottom: 15px;
-        color: #667eea;
-    }
-
-    .value-prop p {
-        font-size: 1.1em;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .form-container {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 25px;
-        padding: 40px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        animation: fadeInUp 1.8s ease-out;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    input {
-        width: 100%;
-        padding: 18px 20px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.05);
-        color: white;
-        font-size: 1em;
-        transition: all 0.3s ease;
-        outline: none;
-    }
-
-    input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    input:focus {
-        border-color: #667eea;
-        background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-    }
-
-    .btn {
-        width: 100%;
-        padding: 20px;
-        border: none;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        font-size: 1.1em;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-top: 10px;
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-    }
-
-    .btn:active {
-        transform: translateY(0);
-    }
-
-    .footer-link {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .footer-link a {
-        color: #667eea;
-        text-decoration: none;
-        font-size: 0.9em;
-        transition: color 0.3s ease;
-    }
-
-    .footer-link a:hover {
-        color: #764ba2;
-    }
-
-    /* Animações */
     @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes fadeInUp {
         from {
             opacity: 0;
             transform: translateY(30px);
@@ -296,18 +65,212 @@
         }
     }
 
-    /* Responsividade */
+    .logo {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .logo h1 {
+        font-size: 3em;
+        font-weight: 900;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        letter-spacing: -2px;
+    }
+
+    .badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 0.75em;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .hero {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+        line-height: 1.3;
+        color: #2d3748;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .stats {
+        background: linear-gradient(135deg, #f6f8fb 0%, #eef2f7 100%);
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .stats p {
+        font-size: 1.2em;
+        color: #4a5568;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .stats .highlight {
+        color: #667eea;
+        font-weight: 900;
+        font-size: 1.5em;
+    }
+
+    .value-box {
+        background: white;
+        border: 3px solid #667eea;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .value-box h3 {
+        font-size: 1.5em;
+        color: #667eea;
+        margin-bottom: 15px;
+    }
+
+    .value-box p {
+        font-size: 1.1em;
+        color: #4a5568;
+        line-height: 1.7;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        color: white;
+        margin-bottom: 30px;
+    }
+
+    .cta-section h3 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .cta-section p {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+        opacity: 0.95;
+        line-height: 1.6;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background: white;
+        color: #667eea;
+        padding: 18px 50px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        background: #f7fafc;
+    }
+
+    .btn-primary:active {
+        transform: translateY(-1px);
+    }
+
+    .steps {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+        text-align: left;
+    }
+
+    .steps h4 {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+        text-align: center;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .step-number {
+        width: 35px;
+        height: 35px;
+        background: white;
+        color: #667eea;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    .step-text {
+        font-size: 0.95em;
+        line-height: 1.4;
+    }
+
+    .footer {
+        text-align: center;
+        color: #718096;
+        font-size: 0.85em;
+        margin-top: 20px;
+    }
+
+    /* Responsivo */
     @media (max-width: 768px) {
-        .hero h2 {
-            font-size: 2em;
+        .container {
+            padding: 40px 25px;
         }
 
         .logo h1 {
-            font-size: 2em;
+            font-size: 2.2em;
         }
 
-        .form-container {
+        .hero h2 {
+            font-size: 1.6em;
+        }
+
+        .cta-section {
             padding: 30px 20px;
+        }
+
+        .btn-primary {
+            padding: 16px 40px;
+            font-size: 1em;
         }
     }
 </style>
@@ -315,21 +278,15 @@
 
 </head>
 <body>
-    <!-- Estrelas decorativas -->
-    <div class="stars" id="stars"></div>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <h1>SAKIDILA</h1>
+            <span class="badge">Exclusivo para Líderes</span>
+        </div>
 
 ```
-<!-- Círculos decorativos -->
-<div class="circle-decoration circle-1"></div>
-<div class="circle-decoration circle-2"></div>
-<div class="circle-decoration circle-3"></div>
-
-<div class="container">
-    <div class="logo">
-        <h1>SAKIDILA</h1>
-        <span class="badge">Exclusivo para Líderes</span>
-    </div>
-
+    <!-- Hero -->
     <div class="hero">
         <h2>
             Treina como <span class="gradient-text">estratega</span>.<br>
@@ -338,62 +295,54 @@
         </h2>
     </div>
 
+    <!-- Estatísticas -->
     <div class="stats">
         <p><span class="highlight">90%</span> das pessoas têm objetivos.</p>
         <p><span class="highlight">10%</span> têm estratégia.</p>
     </div>
 
-    <div class="value-prop">
+    <!-- Value Proposition -->
+    <div class="value-box">
         <h3>🚀 O Ginásio Mental dos 10%</h3>
         <p>Sakidila é onde executivos decisores e empreendedores visionários afinam seu pensamento estratégico e conquistam vantagem competitiva real.</p>
     </div>
 
-    <div class="form-container">
-        <form id="signupForm">
-            <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Nome Completo" required>
+    <!-- CTA -->
+    <div class="cta-section">
+        <h3>Pronto para pensar como os 10%?</h3>
+        <p>Preencha o formulário de candidatura e junte-se a uma comunidade exclusiva de estrategistas de alto nível.</p>
+        
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMNcL2litqGm6uTvADDi4xb4LloSY5XGX8_CQm38JLF3sB4A/viewform" target="_blank" class="btn-primary">
+            Candidate-se Agora
+        </a>
+
+        <!-- Passos -->
+        <div class="steps">
+            <h4>Como Funciona:</h4>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">Preencha o formulário de candidatura</div>
             </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="E-mail Profissional" required>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Análise do seu perfil em até 48h</div>
             </div>
-            <div class="form-group">
-                <input type="email" id="emailConfirm" name="emailConfirm" placeholder="Confirme seu E-mail" required>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Receba convite exclusivo por e-mail</div>
             </div>
-            <button type="submit" class="btn">Inscreva-se Agora</button>
-        </form>
-        <div class="footer-link">
-            <a href="#">Construído com kit</a>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text">Entre no Discord e comece</div>
+            </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2025 Sakidila - O Ginásio Mental dos 10%
+    </div>
 </div>
-
-<script>
-    // Criar estrelas aleatórias
-    const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 50; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        starsContainer.appendChild(star);
-    }
-
-    // Validação do formulário
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const emailConfirm = document.getElementById('emailConfirm').value;
-        
-        if (email !== emailConfirm) {
-            alert('Os e-mails não coincidem. Por favor, verifique.');
-            return;
-        }
-        
-        alert('Inscrição realizada com sucesso! Bem-vindo aos 10%.');
-        // Aqui você pode adicionar a integração com seu backend
-    });
-</script>
 ```
 
 </body>
